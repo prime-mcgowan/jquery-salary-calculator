@@ -1,17 +1,11 @@
-/*
-To Do:
-
-
-*/
 
 let employee = []
 
-    /*{first: '',
+/*  {first: '',
     last: '',
     id: [],
     title: '',
-    salary: []
-}
+    salary: []}
 */
 
 
@@ -23,36 +17,67 @@ function onReady(){
 //Make a click handler for the #submitEmployeeInfoButton
 $('#submitEmployeeInfoButton').on('click', addEmployeeInfo);
 //Make a click handler for the .deleteEmployeeInfoButton
-//$('body').on('click', '.deleteEmployeeInfobutton', deleteEmployeeInfo)
+$('body').on('click', '.deleteEmployeeInfobutton', deleteEmployeeInfo)
 }
 
 
-
-////////// DELETING /////////
-
 //Function to delete an employee and their information 
+function deleteEmployeeInfo() {
+    $(this).parent().parent().remove;//I may need more parents???
+}
 
-//Function to render the employee list after deletion
 
-
-
-////////// ADDING /////////
+////////// START RENDER EMPLOYEE FUNCION /////////
 
 //Function to render the employee information
 function renderEmployeeList () {
 $('#employeeData').empty();
 for(let i=0; i<employee.length; i++){
     $('#employeeData').append(`
-
-   <td> ${employee[i].first}</td>
+<tr>
+    <td>${employee[i].first}</td>
     <td>${employee[i].last}</td>
     <td>${employee[i].id}</td>
     <td>${employee[i].title}</td>
     <td>${employee[i].salary}</td>
+</tr>
+    `)
+}
+}////////// END RENDER EMPLOYEE FUNCION /////////
 
+
+//Using the stored information, calculate monthly costs 
+//and append this to the to DOM. 
+//Monthly costs start at 0
+//As an employee is added...their salary needs to be added to the monthly costs number
+
+function calculateMonthlyCosts () {
+    sum = 0;
+    for(let i=0; i<employee.length; i++)
+    sum += employee[i].salary;
+
+    return sum;
+}
+
+//If the total monthly cost exceeds $20,000, add a 
+//red background color to the total monthly cost.
+
+let monthlyCost = 0;
+let maxMonthlyCost = 200000;
+
+function changeMonthlyCostsFontColor() { 
+if (maxMonthlyCost > 20000) {
+    $('.amount').append(`
+        <h2> class = "totalMonthlyCostText"</h2>
     `)
 }
 }
+
+
+
+
+
+////////START ADD NEW EMPLOYEE FUNCTION////////
 
 //Function to add new employee and their information
 function addEmployeeInfo() {
@@ -84,4 +109,4 @@ $('#idInput').val('');
 $('#titleInput').val('');
 $('#annualSalaryInput').val('');
 
-}//ends addEmployeeInfo function
+}////////END ADD NEW EMPLOYEE FUNCTION////////

@@ -1,3 +1,8 @@
-table, th, td {
+table, th, tr, td {
     border: 1px solid black;
+}
+
+
+.totalMonthlyCostText {
+    color:red;
 }
