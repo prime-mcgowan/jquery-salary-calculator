@@ -10,26 +10,43 @@
 <script src="scripts/jquery.js"></script>
 <script src="scripts/client.js"></script>
 
-    <title>Salary Calculator</title>
+    <title>Salary Calculator</title>   
 </head>
+
+
 <body>
     <!--Header-->
     <h1>Salary Calculator</h1>
 
-    <!--Buttons-->
+    <!--Start of Inputs-->
     <input id="firstNameInput" type="text" placeholder="First Name">
     <input id="lastNameInput" type="text" placeholder="Last Name">
     <input id="idInput" type="number" placeholder="ID Number">
     <input id="titleInput" type="text" placeholder="Title">
-    <input id="annualSalaryInput" type="text" placeholder="Annual Salary">
-   
+    <input id="annualSalaryInput" type="number" placeholder="Annual Salary">
+    <!--End of Inputs-->
+
+    <!--Start of Submit Button-->
+    <button id="submitEmployeeInfoButton">Submit</button>
+    <!--End of Submit Button-->
 
 
-    <input id="submitInput" type="text" placeholder="Submit">
+    <!--Start of Table-->
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Annual Salary</th>   
+            </tr>
+        </thead>
+    </table>
+    <!--End of Table-->
 
-
-
-
+    
+    <h2>Total Monthly:</h1>
 
 
 
