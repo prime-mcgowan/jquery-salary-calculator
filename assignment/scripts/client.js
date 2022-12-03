@@ -1,5 +1,6 @@
 console.log('i am on line 1 of js');
-let employee = []
+let employee = [];
+let monthlyAmount = 0;
 
 /*  {first: '',
     last: '',
@@ -14,19 +15,19 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('i am in onReady');
-    renderEmployeeList()
+   
 //Make a click handler for the #submitEmployeeInfoButton
 $('#submitEmployeeInfoButton').on('click', addEmployeeInfo);
 //Make a click handler for the .deleteEmployeeInfoButton
-$('body').on('click', '.deleteEmployeeInfobutton', deleteEmployeeInfo)
+$('body').on('click', '.deleteEmployeeInfoButton', deleteEmployeeInfo)
 }
 
 
 //Function to delete an employee and their information 
 function deleteEmployeeInfo() {
     console.log('i am in deleteEmployeeInfo');//won't console.log
-    $(this).parent().parent().remove;//I may need more parents???
-    renderEmployeeList();
+    $(this).parent().parent().remove();
+   
 }
 
 
@@ -36,16 +37,16 @@ function deleteEmployeeInfo() {
 //Function to render the employee information
 function renderEmployeeList () {
     console.log('i am in renderEmployeeList');
-$('#employeeData').empty();
+$('.employeeData').empty();
 for(let i=0; i<employee.length; i++){
-    $('#employeeData').append(`
+    $('.employeeData').append(`
     <tr>
-    <td>${employee[i].first}</td>
-    <td>${employee[i].last}</td>
-    <td>${employee[i].id}</td>
-    <td>${employee[i].title}</td>
-    <td>${employee[i].salary}</td>
-    <td><button class="deleteEmployeeInfoButton">Delete</button></td>
+        <td>${employee[i].first}</td>
+        <td>${employee[i].last}</td>
+        <td>${employee[i].id}</td>
+        <td>${employee[i].title}</td>
+        <td>${employee[i].salary}</td>
+        <td><button class="deleteEmployeeInfoButton">Delete</button></td>
     </tr>
     `)
 }
@@ -57,13 +58,14 @@ for(let i=0; i<employee.length; i++){
 //Monthly costs start at 0
 //As an employee is added...their salary needs to be added to the monthly costs number
 
-function calculateMonthlyCosts () {
-    sum = 0;
-    for(let i=0; i<employee.length; i++)
-    sum += employee[i].salary;
 
-    return sum;
-}
+   
+    annualSalaryInput =$('#annualSalaryInput').val();
+    let monthlySalary = annualSalaryInput /12;
+
+
+    
+
 
 
 //
@@ -71,8 +73,8 @@ function calculateMonthlyCosts () {
 //If the total monthly cost exceeds $20,000, add a 
 //red background color to the total monthly cost.
 
-let monthlyCost = 0;
-let maxMonthlyCost = 200000;
+ monthlyCost = 0;
+maxMonthlyCost = 200000;
 
 function changeMonthlyCostsFontColor() { 
 if (maxMonthlyCost > 20000) {
@@ -97,6 +99,9 @@ let newLast = $('#lastNameInput').val();
 let newId = $('#idInput').val();
 let newTitle = $('#titleInput').val();
 let newAnnualSalary = $('#annualSalaryInput').val();
+let monthlyAmount = annualSalaryInput / 12;
+
+$('#monthlyAmount').text
 
 //Create new employeeInfo object
 let newEmployeeInfo = {
