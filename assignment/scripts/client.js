@@ -1,4 +1,4 @@
-
+console.log('i am on line 1 of js');
 let employee = []
 
 /*  {first: '',
@@ -13,6 +13,7 @@ $(document).ready(onReady);
 
 
 function onReady(){
+    console.log('i am in onReady');
     renderEmployeeList()
 //Make a click handler for the #submitEmployeeInfoButton
 $('#submitEmployeeInfoButton').on('click', addEmployeeInfo);
@@ -23,24 +24,29 @@ $('body').on('click', '.deleteEmployeeInfobutton', deleteEmployeeInfo)
 
 //Function to delete an employee and their information 
 function deleteEmployeeInfo() {
+    console.log('i am in deleteEmployeeInfo');//won't console.log
     $(this).parent().parent().remove;//I may need more parents???
+    renderEmployeeList();
 }
+
 
 
 ////////// START RENDER EMPLOYEE FUNCION /////////
 
 //Function to render the employee information
 function renderEmployeeList () {
+    console.log('i am in renderEmployeeList');
 $('#employeeData').empty();
 for(let i=0; i<employee.length; i++){
     $('#employeeData').append(`
-<tr>
+    <tr>
     <td>${employee[i].first}</td>
     <td>${employee[i].last}</td>
     <td>${employee[i].id}</td>
     <td>${employee[i].title}</td>
     <td>${employee[i].salary}</td>
-</tr>
+    <td><button class="deleteEmployeeInfoButton">Delete</button></td>
+    </tr>
     `)
 }
 }////////// END RENDER EMPLOYEE FUNCION /////////
@@ -58,6 +64,9 @@ function calculateMonthlyCosts () {
 
     return sum;
 }
+
+
+//
 
 //If the total monthly cost exceeds $20,000, add a 
 //red background color to the total monthly cost.
