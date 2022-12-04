@@ -32,14 +32,17 @@ function deleteEmployeeInfo() {
 }
 
 
-
 ////////// START RENDER EMPLOYEE FUNCION /////////
 
 //Function to render the employee information
 function renderEmployeeList () {
     console.log('i am in renderEmployeeList');
+
 totalMonthlyCost = 0;
-$('.employeeData').empty();
+$('.employeeData').empty();  //employeeData is what I labeled my table
+
+//I want my employee array to be looped through and when that happens
+//I'm asking the computer to append(add) the new input information
 for(let i=0; i<employee.length; i++){
     $('.employeeData').append(`
     <tr>
@@ -49,35 +52,35 @@ for(let i=0; i<employee.length; i++){
         <td>${employee[i].title}</td>
         <td>${employee[i].salary}</td>
         <td><button class="deleteEmployeeInfoButton">Delete</button></td>
-    </tr>
+    </tr> 
     `)
+
+    //calculate monthly costs 
+    //Monthly costs start at 0
+    //As an employee is added...their salary 
+    //needs to be added to the monthly costs number
+
+    //I want my monthlyCost to be equal to an employee's salary diveded by12
     monthlyCost = employee[i].salary / 12;
+    //My totalMonthlyCost is set as a global variable = 0
+    //I am asking the computer to add the newly calculated
+    //monthlyCost to the totalMonthlyCost variable
     totalMonthlyCost += monthlyCost;
 }
-
+    //I am asking jquerry to target my class .monthlyCost and turn
+    //it into the number that was calculated above
     $('.monthlyCost').text(Number(`${totalMonthlyCost}`));
 
+    
+    //If the total monthly cost exceeds $20,000, add a 
+    //red background color to the total monthly cost.
     maxMonthlyCost = 20000;
-   
     if ( totalMonthlyCost > maxMonthlyCost ) {
         $('.monthlyCost').append
         //(`class = monthlyCost`);
-        //css("background-color", "red")
-       
+        //css("background-color", "red")   
     }
-    
-
-
-
-
 }////////// END RENDER EMPLOYEE FUNCION /////////
-
-
-//If the total monthly cost exceeds $20,000, add a 
-//red background color to the total monthly cost.
-
-
-
 
 
 ////////START ADD NEW EMPLOYEE FUNCTION////////
@@ -92,16 +95,6 @@ let newId = $('#idInput').val();
 let newTitle = $('#titleInput').val();
 let newAnnualSalary = $('#annualSalaryInput').val();
 
-//calculate monthly costs 
-//Monthly costs start at 0
-//As an employee is added...their salary 
-//needs to be added to the monthly costs number
-
-//function to calculate annual
-
-
-//for of loop 
-
 
 //Create new employeeInfo object
 let newEmployeeInfo = {
@@ -113,10 +106,13 @@ let newEmployeeInfo = {
 }
 
 //Add to array
+//The new employee information is being sent to my employee array
 employee.push(newEmployeeInfo);
-renderEmployeeList();
+renderEmployeeList();  //???Why do I need render here
 
 //Set inputs back to empty 
+//Once I hit the submit button the data that was just typed
+//in will be gone and my placeholders will there
 $('#firstNameInput').val('');
 $('#lastNameInput').val('');
 $('#idInput').val('');
