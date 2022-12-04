@@ -1,6 +1,7 @@
 console.log('i am on line 1 of js');
 let employee = [];
-let monthlyAmount = 0;
+let totalMonthlyCost = 0;
+
 
 /*  {first: '',
     last: '',
@@ -25,7 +26,7 @@ $('body').on('click', '.deleteEmployeeInfoButton', deleteEmployeeInfo)
 
 //Function to delete an employee and their information 
 function deleteEmployeeInfo() {
-    console.log('i am in deleteEmployeeInfo');//won't console.log
+    console.log('i am in deleteEmployeeInfo');
     $(this).parent().parent().remove();
    
 }
@@ -37,6 +38,7 @@ function deleteEmployeeInfo() {
 //Function to render the employee information
 function renderEmployeeList () {
     console.log('i am in renderEmployeeList');
+totalMonthlyCost = 0;
 $('.employeeData').empty();
 for(let i=0; i<employee.length; i++){
     $('.employeeData').append(`
@@ -49,43 +51,24 @@ for(let i=0; i<employee.length; i++){
         <td><button class="deleteEmployeeInfoButton">Delete</button></td>
     </tr>
     `)
+    monthlyCost = employee[i].salary / 12;
+    totalMonthlyCost += monthlyCost;
 }
+
+    $('.monthlyCost').text(Number(`${totalMonthlyCost}`));
 }////////// END RENDER EMPLOYEE FUNCION /////////
 
-
-//Using the stored information, calculate monthly costs 
-//and append this to the to DOM. 
-//Monthly costs start at 0
-//As an employee is added...their salary needs to be added to the monthly costs number
-
-
-   
-    annualSalaryInput =$('#annualSalaryInput').val();
-    let monthlySalary = annualSalaryInput /12;
-
-
-    
-
-
-
-//
 
 //If the total monthly cost exceeds $20,000, add a 
 //red background color to the total monthly cost.
 
- monthlyCost = 0;
-maxMonthlyCost = 200000;
-
+maxMonthlyCost = 20000;
 function changeMonthlyCostsFontColor() { 
-if (maxMonthlyCost > 20000) {
-    $('.amount').append(`
-        <h2> class = "totalMonthlyCostText"</h2>
-    `)
+if ( totalMonthlyCost > maxMonthlyCost ) {
+    $('.monthlyCost').append(``)
+    //css("background-color", "red")
 }
 }
-
-
-
 
 
 ////////START ADD NEW EMPLOYEE FUNCTION////////
@@ -99,9 +82,17 @@ let newLast = $('#lastNameInput').val();
 let newId = $('#idInput').val();
 let newTitle = $('#titleInput').val();
 let newAnnualSalary = $('#annualSalaryInput').val();
-let monthlyAmount = annualSalaryInput / 12;
 
-$('#monthlyAmount').text
+//calculate monthly costs 
+//Monthly costs start at 0
+//As an employee is added...their salary 
+//needs to be added to the monthly costs number
+
+//function to calculate annual
+
+
+//for of loop 
+
 
 //Create new employeeInfo object
 let newEmployeeInfo = {
