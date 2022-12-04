@@ -56,19 +56,28 @@ for(let i=0; i<employee.length; i++){
 }
 
     $('.monthlyCost').text(Number(`${totalMonthlyCost}`));
+
+    maxMonthlyCost = 20000;
+   
+    if ( totalMonthlyCost > maxMonthlyCost ) {
+        $('.monthlyCost').append
+        //(`class = monthlyCost`);
+        //css("background-color", "red")
+       
+    }
+    
+
+
+
+
 }////////// END RENDER EMPLOYEE FUNCION /////////
 
 
 //If the total monthly cost exceeds $20,000, add a 
 //red background color to the total monthly cost.
 
-maxMonthlyCost = 20000;
-function changeMonthlyCostsFontColor() { 
-if ( totalMonthlyCost > maxMonthlyCost ) {
-    $('.monthlyCost').append(``)
-    //css("background-color", "red")
-}
-}
+
+
 
 
 ////////START ADD NEW EMPLOYEE FUNCTION////////
