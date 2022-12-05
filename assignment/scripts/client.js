@@ -76,7 +76,8 @@ for(let i=0; i<employee.length; i++){
     //red background color to the total monthly cost.
     maxMonthlyCost = 20000;
     if ( totalMonthlyCost > maxMonthlyCost ) {
-        $('.monthlyCost').append
+        console.log('in tmc');
+       $('.monthlyCost').css(`background-color`, `red`);
         //(`class = monthlyCost`);
         //css("background-color", "red")   
     }
